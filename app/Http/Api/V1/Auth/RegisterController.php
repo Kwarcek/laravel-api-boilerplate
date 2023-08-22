@@ -3,8 +3,8 @@
 namespace App\Http\Api\V1\Auth;
 
 use App\Http\Api\ApiController;
-use app\Http\Requests\Api\V1\Auth\RegisterRequest;
-use app\Http\Resources\Api\V1\User\UserResource;
+use App\Http\Requests\Api\V1\Auth\RegisterRequest;
+use App\Http\Resources\Api\V1\User\UserResource;
 use App\Models\User;
 
 class RegisterController extends ApiController
