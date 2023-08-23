@@ -44,4 +44,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'closed' => 'boolean',
     ];
+
+
+    public function scopeActive(Builder $query): void
+    {
+        $query->where('closed', false);
+    }
 }
