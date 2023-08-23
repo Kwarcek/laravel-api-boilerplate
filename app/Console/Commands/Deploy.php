@@ -8,7 +8,7 @@ class Deploy extends Command
 {
     protected $signature = 'app:deploy';
 
-    protected $description = 'Command description';
+    protected $description = 'Deploy application';
 
     public function handle(): int
     {
@@ -24,6 +24,7 @@ class Deploy extends Command
         $this->call('horizon:publish');
 
         $this->info('The application has been deployed.');
+
         return Command::SUCCESS;
     }
 }
