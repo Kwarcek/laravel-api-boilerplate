@@ -28,4 +28,8 @@ Route::group([
         Route::post('logout', [\App\Http\Api\V1\Auth\LogoutController::class, 'logout']);
     });
 
+    Route::prefix('user')->group(function() {
+        Route::get('{user}/close', [\App\Http\Api\V1\User\UserController::class, 'close']);
+    });
+
 });
