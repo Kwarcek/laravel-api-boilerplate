@@ -26,7 +26,7 @@ class LoginRequest extends FormRequest
             throw new ValidationException($validator);
         }
 
-        $user = User::query()
+        $user = User::active()
             ->where('email', $this->input('email'))
             ->first();
 
