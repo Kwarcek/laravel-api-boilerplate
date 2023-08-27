@@ -20,6 +20,7 @@ Celem zadania jest wykonanie aplikacji na podstawie framework Laravel (tylko bac
 8. Generate Laravel app key (`php artisan key:generate`)
 9. Restart services (`supervisorctl restart all`)
 10. Deploy application (`php artisan app:deploy`)
+11. Add `OPEN_WEATHER_MAP_ONE_CALL_3_API_KEY` to `.env`
 
 ## Testing
 Once you've written tests, you may run them using phpunit `./vendor/bin/phpunit`
