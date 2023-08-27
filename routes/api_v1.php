@@ -22,14 +22,19 @@ Route::group([
         return $request->user();
     });
 
-    Route::prefix('auth')->group(function() {
-        Route::post('register', [\App\Http\Api\V1\Auth\RegisterController::class, 'register']);
-        Route::post('login', [\App\Http\Api\V1\Auth\LoginController::class, 'login']);
-        Route::post('logout', [\App\Http\Api\V1\Auth\LogoutController::class, 'logout']);
+    Route::prefix('auth')->group(function () {
+        Route::post('register', [\App\Http\Api\V1\Auth\RegisterController::class, 'register'])->name('register');
+        Route::post('login', [\App\Http\Api\V1\Auth\LoginController::class, 'login'])->name('login');
+        Route::post('logout', [\App\Http\Api\V1\Auth\LogoutController::class, 'logout'])->name('logout');
     });
 
-    Route::prefix('user')->group(function() {
+    Route::prefix('user')->group(function () {
         Route::get('{user}/close', [\App\Http\Api\V1\User\UserController::class, 'close']);
+    });
+
+    Route::prefix('weather')->group(function () {
+        Route::get('/', [\App\Http\Api\V1\Weather\WeatherController::class, 'index']);
+        Route::get('/current', [\App\Http\Api\V1\Weather\WeatherController::class, 'current']);
     });
 
 });
