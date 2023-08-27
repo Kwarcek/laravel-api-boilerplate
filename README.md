@@ -22,6 +22,12 @@ Celem zadania jest wykonanie aplikacji na podstawie framework Laravel (tylko bac
 10. Deploy application (`php artisan app:deploy`)
 11. Add `OPEN_WEATHER_MAP_ONE_CALL_3_API_KEY` to `.env`
 
+## Dodatkowe informacje
+1. Aplikacja będzie dostępna pod adresem http://localhost:8093/
+2. Rejestracja jest dostępna pod URI `api/v1/auth/register` (F4), logowanie `api/v1/auth/login` (F5)
+3. Pogodę można zobaczyć pod URI `api/v1/weather` (F6) a pogodę aktualną `api/v1/weather/current` (F7)
+4. Konto może zamknąć tylko właściciel ów konta pod URI `api/v1/user/{user}/close`, gdzie w miejsce {user} podstawiamy ID użytkownika (F8)
+
 ## Testing
 Once you've written tests, you may run them using phpunit `./vendor/bin/phpunit`
 
