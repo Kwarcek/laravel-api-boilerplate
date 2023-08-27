@@ -45,9 +45,10 @@ class User extends Authenticatable
         'closed' => 'boolean',
     ];
 
-
-    public function scopeActive(Builder $query): void
+    protected static function booted(): void
     {
-        $query->where('closed', false);
+        static::addGlobalScope('active', function(Builder $query) {
+            $query->where('closed', false);
+        });
     }
 }
