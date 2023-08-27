@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 /**
@@ -10,19 +11,19 @@ use Illuminate\Support\Str;
  */
 class UserFactory extends Factory
 {
+    public const DEFAULT_PASSWORD = 'password';
     /**
      * Define the model's default state.
      */
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
             'closed' => false,
             'firstname' => fake()->firstName(),
             'lastname' => fake()->lastName(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'password' => Hash::make(self::DEFAULT_PASSWORD),
             'remember_token' => Str::random(10),
         ];
     }

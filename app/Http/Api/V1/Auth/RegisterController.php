@@ -11,7 +11,7 @@ class RegisterController extends ApiController
 {
     public function register(RegisterRequest $request)
     {
-        $user = User::create($request->validated());
+        $user = User::create($request->validated())->fresh();
 
         $token = $user->createToken('api_v1')->plainTextToken;
 

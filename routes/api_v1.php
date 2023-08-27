@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::prefix('auth')->group(function () {
+    Route::post('register', [\App\Http\Api\V1\Auth\RegisterController::class, 'register'])->name('register');
+    Route::post('login', [\App\Http\Api\V1\Auth\LoginController::class, 'login'])->name('login');
+});
+
 Route::group([
     'middleware' => 'auth:sanctum'
 ], function () {
@@ -23,8 +28,6 @@ Route::group([
     });
 
     Route::prefix('auth')->group(function () {
-        Route::post('register', [\App\Http\Api\V1\Auth\RegisterController::class, 'register'])->name('register');
-        Route::post('login', [\App\Http\Api\V1\Auth\LoginController::class, 'login'])->name('login');
         Route::post('logout', [\App\Http\Api\V1\Auth\LogoutController::class, 'logout'])->name('logout');
     });
 

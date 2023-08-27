@@ -5,7 +5,8 @@ namespace App\Http\Api\V1\Weather;
 use App\Http\Api\ApiController;
 use App\Http\Requests\Api\V1\Weather\WeatherCurrentRequest;
 use App\Http\Requests\Api\V1\Weather\WeatherIndexRequest;
-use App\Http\Resources\WeatherResource;
+use App\Http\Resources\Api\V1\Weather\CurrentWeatherResource;
+use App\Http\Resources\Api\V1\Weather\WeatherResource;
 use App\Services\OpenWeatherMap\OneCallApiV3\Enitity\Coordinate;
 use App\Services\OpenWeatherMap\OneCallApiV3\Enums\ExcludeOption;
 use App\Services\OpenWeatherMap\OneCallApiV3\Enums\Unit;
@@ -28,7 +29,7 @@ class WeatherController extends ApiController
         return new WeatherResource($response);
     }
 
-    public function current(WeatherCurrentRequest $request, Request $apiRequest): WeatherResource
+    public function current(WeatherCurrentRequest $request, Request $apiRequest): CurrentWeatherResource
     {
         $coordinate = new Coordinate($request->latitude, $request->longitude);
 
@@ -45,6 +46,6 @@ class WeatherController extends ApiController
             lang: $request->lang
         );
 
-        return new WeatherResource($response);
+        return new CurrentWeatherResource($response);
     }
 }
