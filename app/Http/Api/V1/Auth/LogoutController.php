@@ -4,15 +4,16 @@ namespace App\Http\Api\V1\Auth;
 
 use App\Http\Api\ApiController;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class LogoutController extends ApiController
 {
-    public function logout(): JsonResponse
+    public function logout(Request $request): JsonResponse
     {
-        auth()->user()->tokens()->delete();
+        $request->user()->tokens()->delete();
 
         return response()->json([
-            'message' => 'You have been successfully logout'
+            'message' => __('auth.logout')
         ]);
     }
 }

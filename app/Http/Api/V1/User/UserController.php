@@ -6,13 +6,18 @@ use App\Http\Api\ApiController;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Validation\UnauthorizedException;
 
 class UserController extends ApiController
 {
+    /**
+     * @throws UnauthorizedException
+     */
     public function close(User $user, Request $request): JsonResponse
     {
-        if($user->id !== $request->user()->id) { // todo
-            throw new \Exception();
+        if($user->id !== $request->user()->id) {
+            throw new UnauthorizedException('', Response::HTTP_UNAUTHORIZED);
         }
 
         $user->update(['closed' => true]);
@@ -20,7 +25,7 @@ class UserController extends ApiController
         $user->tokens()->delete();
 
         return response()->json([
-            'message' => 'You have been closed successfully'
+            'message' => __('user.close')
         ]);
     }
 }

@@ -26,9 +26,7 @@ class LoginRequest extends FormRequest
             throw new ValidationException($validator);
         }
 
-        $user = User::active()
-            ->where('email', $this->input('email'))
-            ->first();
+        $user = User::whereEmail($this->input('email'))->first();
 
         if (!$user || !Hash::check($this->input('password'), $user->password)) {
             throw new UnauthorizedException('', Response::HTTP_UNAUTHORIZED);
