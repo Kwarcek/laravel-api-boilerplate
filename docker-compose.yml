@@ -59,7 +59,7 @@ services:
 
     mailhog:
         container_name: dc-mailhog
-        image: mailhog/mailhog:v1.0.1
+        image: jcalonso/mailhog
         ports:
             - ${MAIL_PORT}:1025
             - ${MAILHOG_HTTP_PORT}:8025

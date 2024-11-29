@@ -20,7 +20,6 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'firstname',
-        'closed',
         'lastname',
         'email',
         'password',
@@ -43,13 +42,5 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'closed' => 'boolean',
     ];
-
-    protected static function booted(): void
-    {
-        static::addGlobalScope('active', function(Builder $query) {
-            $query->where('closed', false);
-        });
-    }
 }
